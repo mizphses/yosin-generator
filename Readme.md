@@ -1,5 +1,6 @@
 # ワクチン問診票発行WEBアプリ
-[!ogp](https://github.com/mizphses/yosin-generator/blob/main/templates/assets/ogp.png?raw=true)
+
+![ogp](https://github.com/mizphses/yosin-generator/blob/main/templates/assets/ogp.png?raw=true)
 
 ## 実行環境の作り方
 
@@ -11,7 +12,7 @@
 
 こんな感じ
 
-[!出力サンプル](https://user-images.githubusercontent.com/49401718/131922146-7c3b33ed-eab1-4ea3-9191-034cb04e127d.png)
+![出力サンプル](https://user-images.githubusercontent.com/49401718/131922146-7c3b33ed-eab1-4ea3-9191-034cb04e127d.png)
 
 ## 作者
 
