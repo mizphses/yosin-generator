@@ -241,7 +241,7 @@ def genpdf():
 
   cc.setFont(fontname_g,12)
   cc.drawString(65,710,form_info['ruby'])
-  if form_info['sex'] == 'true':
+  if form_info['sex'] == 'male':
       cc.drawString(338,669,'レ')
   else:
       cc.drawString(373,669,'レ')
