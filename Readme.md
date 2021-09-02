@@ -1,4 +1,6 @@
 # ワクチン問診票発行WEBアプリ
+![](https://heroku-badge.herokuapp.com/?app={vaccine-yoshin})
+[動いてます！！](https://vaccine-yoshin.herokuapp.com/)
 
 ![ogp](https://github.com/mizphses/yosin-generator/blob/main/templates/assets/ogp.png?raw=true)
 
