@@ -266,7 +266,7 @@ def genpdf():
   pdf_out = output.getvalue()
   output.close()
   response = make_response(pdf_out)
-  response.headers['Content-Disposition'] = "attachment; filename='yoshin.pdf"
+  response.headers['Content-Disposition'] = "attachment; filename=yoshinhyo.pdf"
   response.mimetype = 'application/pdf'
   return response
 
