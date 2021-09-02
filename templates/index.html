@@ -4,10 +4,11 @@
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta property="og:url" content="https://vaccine-yoshin.herokuapp.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Pfizer/Moderna" />
+    <meta property="og:title" content="予診票ジェネレータ(JP)" />
     <meta property="og:description" content="日本国内用の公費で行うファイザー・モデルナ武田ワクチンの接種用予診票がオンラインで作れます．" />
     <meta property="og:site_name" content="予診票ジェネレータ" />
     <meta property="og:image" content="https://vaccine-yoshin.herokuapp.com/assets/ogp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>予診票ジェネレータ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
@@ -149,14 +150,14 @@
         </div>
         <div class="question">
           <div class="mb-3">
-            <label for="ruby" class="form-label">ふりがな</label>
-            <input type="text" class="form-control" id="ruby" name="ruby" placeholder="ミズサワ　ナノ">
+            <label for="ruby" class="form-label">フリガナ</label>
+            <input type="text" class="form-control" id="ruby" name="ruby" pattern="[\uFF66-\uFF9D]*" placeholder="ミズサワ　ナノ">
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="phone" class="form-label">電話番号, ハイフン（-）区切りで</label>
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="080-1234-5678">
+            <input type="text" class="form-control" id="phone" name="phone" pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="080-1234-5678">
           </div>
         </div>
         <div class="question">
