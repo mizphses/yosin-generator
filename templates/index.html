@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      * {
+        font-family: "Lexend", "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
+      }
+
+      .question {
+        margin-top: 2em;
+        margin-bottom: 2em;
+      }
+
+      [class$="show"] {
+        background: lightgoldenrodyellow;
+        padding: 2em;
+      }
+
+      .caution {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: red;
+      }
+
+      .invisible {
+        display: none;
+      }
+    </style>
+    <script>
+      $(function() {
+        $('[name="q1"]:radio').on("change", function() {
+          if ($('[id=01no]').prop('checked')) {
+            $('.q1show').addClass('invisible');
+          } else if ($('[id=01yes]').prop('checked')) {
+            $('.q1show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q4"]:radio').on("change", function() {
+          if ($('[id=04no]').prop('checked')) {
+            $('.q4show').addClass('invisible');
+          } else if ($('[id=04yes]').prop('checked')) {
+            $('.q4show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q5"]:radio').on("change", function() {
+          if ($('[id=05no]').prop('checked')) {
+            $('.q5show').addClass('invisible');
+          } else if ($('[id=05yes]').prop('checked')) {
+            $('.q5show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q6"]:radio').on("change", function() {
+          if ($('[id=06no]').prop('checked')) {
+            $('.q6show').addClass('invisible');
+          } else if ($('[id=06yes]').prop('checked')) {
+            $('.q6show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q7"]:radio').on("change", function() {
+          if ($('[id=07no]').prop('checked')) {
+            $('.q7show').addClass('invisible');
+          } else if ($('[id=07yes]').prop('checked')) {
+            $('.q7show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q9"]:radio').on("change", function() {
+          if ($('[id=09no]').prop('checked')) {
+            $('.q9show').addClass('invisible');
+          } else if ($('[id=09yes]').prop('checked')) {
+            $('.q9show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q10"]:radio').on("change", function() {
+          if ($('[id=10no]').prop('checked')) {
+            $('.q10show').addClass('invisible');
+          } else if ($('[id=10yes]').prop('checked')) {
+            $('.q10show').removeClass('invisible');
+          }
+        });
+      });
+      $(function() {
+        $('[name="q12"]:radio').on("change", function() {
+          if ($('[id=12no]').prop('checked')) {
+            $('.q12show').addClass('invisible');
+          } else if ($('[id=12yes]').prop('checked')) {
+            $('.q12show').removeClass('invisible');
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">予診票ジェネレータ</a>
+      </div>
+    </nav>
+    <img src="assets/main.svg">
+    <div class="container">
+      <form action="/genpdf" method="post">
+        <div class="question">
+          <div class="mb-3">
+            <label for="address" class="form-label">住民票記載の住所</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="東京都八王子市東中野７４２番地１">
+          </div>
+        </div>
+        <div class="question">
+          <div class="mb-3">
+            <label for="name" class="form-label">氏名（外国籍の場合は在留カード等の通り）</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="水沢　菜音">
+          </div>
+        </div>
+        <div class="question">
+          <div class="mb-3">
+            <label for="ruby" class="form-label">ふりがな</label>
+            <input type="text" class="form-control" id="ruby" name="ruby" placeholder="ミズサワ　ナノ">
+          </div>
+        </div>
+        <div class="question">
+          <div class="mb-3">
+            <label for="phone" class="form-label">電話番号, ハイフン（-）区切りで</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="080-1234-5678">
+          </div>
+        </div>
+        <div class="question">
+          <div class="mb-3">
+            <label for="birthdate" class="form-label">生年月日</label>
+            <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="2003/02/28">
+          </div>
+        </div>
+        <div class="question">
+          <label>性別</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="sex" id="male">
+              男
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="sex" id="female">
+              女
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（1）</b>あなたは新型コロナウイルスのワクチンを初めて受けますか？</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q1" id="01no" value="true" checked>
+              はい（今まで新型コロナウイルスのワクチンを受けたことはありません）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q1" id="01yes" value="false" >
+              いいえ（1回以上受けたことがあります）
+            </label>
+          </div>
+          <div class="mb-3 q1show invisible" id="q1show">
+            <label for="firstvaccine" class="form-label">１回目はいつですか？</label>
+            <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/08/03">
+            <p class="caution">優先摂取を受けたなどで今日が3回目以上の方はスタッフに伝えてください．</p>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（2）</b>現時点で住民票のある住所と，クーポン券記載の住所は同じですか？</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              はい（同じです）
+              <input class="form-check-input" type="radio" name="q2" id="02yes" value="true" checked>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              いいえ（別の自治体です）
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q2" id="02no" value="false">
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（3）</b>『新型コロナワクチンの説明書』を読んで、効果や副反応などについて理解しましたか？</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q3" id="03yes" value="true" checked>
+              はい（理解しました）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q3" id="03no" value="false">
+              いいえ（理解できませんでした）
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（4）</b>接種順位の上位となる対象グループ（早めにワクチンが打てるグループ）に該当しますか</label>
+          <p style="background: #EEE;padding:1em;">これは，医療従事者，60歳以上，高齢者施設等の従事者，基礎疾患を有する者が該当します．</p>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q4" id="04yes" value="true">
+              はい（あてはまります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q4" id="04no" value="false" checked>
+              いいえ（あてはまりません）
+            </label>
+          </div>
+          <div class="mb-3 q4show invisible" id="q4show">
+            <label for="firstvaccine" class="form-label">次から当てはまるものを<span class="caution">全て</span>選んでください</label>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q4-addition-med" value="true" id="medwork">
+                医療従事者
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q4-addition-65" value="true" id="65plus">
+                65歳以上
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q4-addition-60" value="true" id="60to64">
+                64歳以上
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q4-addition-eld" value="true" id="eldwork">
+                高齢者施設等に従事する人
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q4-addition-und" value="true" id="underlying">
+                基礎疾患を有する者
+              </label>
+            </div>
+            <div class="mb-3 underlying-addition">
+              <label for="name" class="form-label">基礎疾患の名称等</label>
+              <input type="text" class="form-control" name="underlying_sikkan" placeholder="肥満">
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（5）</b>現在、何らかの病気にかかって、治療（投薬など）を受けていますか？</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q5" id="05yes" value="true">
+              はい（あてはまります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q5"  id="05no" value="false" checked>
+              いいえ（あてはまりません）
+            </label>
+          </div>
+          <div class="mb-3 q5show invisible" id="q4show">
+            <label for="firstvaccine" class="form-label">次から当てはまるものを<span class="caution">全て</span>選んでください</label>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-h" value="true" id="heart">
+                心臓病
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-k" value="true" id="kidney">
+                腎臓病
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-l" value="true" id="liver">
+                肝臓病
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-b" value="true" id="blood">
+                血液疾患
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-n" value="true" id="blood_notstop">
+                血液が止まりにくい病気
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-i"  value="true" id="immunodeficiency">
+                免疫不全
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-otc" value="true" id="other_chiryou">
+                その他
+              </label>
+            </div>
+            <div class="mb-3 other-chiryou">
+              <input type="text" class="form-control" id="chiryou" placeholder=""  name="chiryou" >
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-sara" value="true" id="immunodeficiency">
+                血液をサラサラにする薬を使って治療中→下に名前を入力
+              </label>
+            </div>
+            <div class="mb-3 other-chiryou">
+              <input type="text" class="form-control" id="medicine_blood" name="medicine_blood" placeholder="">
+            </div>
+            <div>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="q5-addition-otm" value="true" id="immunodeficiency">
+                その他投薬治療を受けている→下に名前を入力
+              </label>
+            </div>
+            <div class="mb-3 other-chiryou">
+              <input type="text" class="form-control" id="touyaku" name="touyaku" placeholder="">
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（6）</b>最近１ヶ月以内に熱が出たり、病気にかかったりしましたか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q6" id="06yes" value="true">
+              はい（熱が出たり，病気にかかったりしました）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q6" id="06no" value="false" checked>
+              いいえ（熱が出ていませんし，病気にかかっていません）
+            </label>
+          </div>
+          <div class="mb-3 q6show invisible" id="q6show">
+            <label for="sick" class="form-label">どんな病気ですか？</label>
+            <input type="text" class="form-control" id="sick" name="sick" placeholder="風邪">
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（7）</b>今日、体に具合が悪いところがありますか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q7" id="07yes" value="true">
+              はい（具合が悪いところがあります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q7" id="07no" value="false"  checked>
+              いいえ（具合が悪いところはありません）
+            </label>
+          </div>
+          <div class="mb-3 q7show invisible" id="q7show">
+            <label for="guai" class="form-label">どんな症状ですか?</label>
+            <input type="text" class="form-control" id="guai" name="guai" placeholder="風邪">
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（8）</b>けいれん（ひきつけ）を起こしたことがありますか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q8" id="08yes" value="true">
+              はい（けいれん・ひきつけを起こしたことがあります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q8" id="08no" value="false" checked>
+              いいえ（けいれん・ひきつけを起こしたことはありません）
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（9）</b>薬や食品などで、重いアレルギー症状（アナフィラキシーなど）を起こしたことがありますか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q9" id="09yes" value="true">
+              はい（重いアレルギーが薬や食品で出ることがあります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q9" id="09no" value="false" checked>
+              いいえ（重いアレルギー，アナフィラキシーが出ることはありません）
+            </label>
+          </div>
+          <div class="mb-3 q9show invisible" id="q7show">
+            <label for="anaphylaxie_item" class="form-label">どんなもののアナフィラキシーですか?</label>
+            <input type="text" class="form-control" id="anaphylaxie_item" name="anaphylaxie_item" placeholder="そば">
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（10）</b>これまでに予防接種を受けて具合が悪くなったことはありますか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q10"  id="10yes" value="true">
+              はい（ワクチン・予防接種で調子が悪くなったことがあります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q10" id="10no" value="false" checked>
+              いいえ（重いアレルギー，アナフィラキシーが出ることはありません）
+            </label>
+          </div>
+          <div class="mb-3 q10show invisible" id="q10show">
+            <label for="vaccine_item" class="form-label">何の予防接種ですか?</label>
+            <input type="text" class="form-control" id="vaccine_item" name="vaccine_item" placeholder="インフルエンザ">
+            <label for="vaccine_sick" class="form-label">どうなりましたか?</label>
+            <input type="text" class="form-control" id="vaccine_sick" name="vaccine_shoujou" placeholder="倒れました">
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（11）</b>現在妊娠している可能性（生理が予定より遅れているなど）はありますか? または、授乳中ですか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q11"  id="11yes" value="true">
+              はい（妊娠している可能性がある，妊娠している，授乳中です）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q11"  id="11no" value="false" checked>
+              いいえ（妊娠や授乳はしていません．）
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（12）</b>２週間以内に予防接種を受けましたか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q12" id="12yes" value="true" >
+              はい（2週間以内に予防接種・ワクチンを受けました）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q12" id="12no" value="false" checked>
+              いいえ（ワクチンや予防接種を2週間以内に受けていません）
+            </label>
+          </div>
+          <div class="mb-3 q12show invisible" id="q11show">
+            <label for="vaccinated_type" class="form-label">何の予防接種ですか?</label>
+            <input type="text" class="form-control" id="vaccinated_type" name="vaccinated_type" placeholder="インフルエンザ">
+            <label for="vaccinated_type" class="form-label">いつですか?</label>
+            <input type="date" class="form-control" id="vaccinated_when" name="vaccinated_when" placeholder="2021/10/03">
+          </div>
+        </div>
+        <div class="question">
+          <label><b>質問（13）</b>今日の予防接種について質問がありますか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q13" id="13yes" value="true" >
+              はい（質問があります）
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q13"  id="13no" value="false" checked>
+              いいえ（質問はありません）
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">接種を希望します．ついては，以上の内容で問診票のPDFを作成します</button>
+      </form>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">(c)2021- Fuminori Ogawa</p>
+        <p>動かすのにも金がかかるので寄付お待ちしてます：住信SBIネット銀行 107（バナナ支店）普通・4634757　オガワ　フミノリ宛</p>
+      </div>
+    </footer>
+  </body>
+
+</html>
