@@ -56,9 +56,13 @@ def genpdf():
   vaccine_item=request.form.get('vaccine_item')
   vaccine_shoujou=request.form.get('vaccine_shoujou')
   q11=request.form.get('q11')
-  vaccinated_type=request.form.get('vaccinated_type')
-  vaccinated_when=str(datetime.strptime(request.form.get('vaccinated_when'), '%Y-%m-%d').month)+"/"+str(datetime.strptime(request.form.get('vaccinated_when'), '%Y-%m-%d').day)
   q12=request.form.get('q12')
+  if q12 == 'true':
+    vaccinated_type=request.form.get('vaccinated_type')
+    vaccinated_when=str(datetime.strptime(request.form.get('vaccinated_when'), '%Y-%m-%d').month)+"/"+str(datetime.strptime(request.form.get('vaccinated_when'), '%Y-%m-%d').day)
+  else:
+    vaccinated_type=""
+    vaccinated_when=""
   q13=request.form.get('q13')
   med = request.form.get('q4-addition-med')
   ov65 = request.form.get('q4-addition-65')
