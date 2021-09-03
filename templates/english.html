@@ -124,6 +124,15 @@
           }
         });
       });
+      $(function() {
+        $('[name="maker"]:radio').on("change", function() {
+          if ($('[id=astrano]').prop('checked')) {
+            $('.astra').addClass('invisible');
+          } else if ($('[id=astrayes]').prop('checked')) {
+            $('.astra').removeClass('invisible');
+          }
+        });
+      });
     </script>
   </head>
 
@@ -180,6 +189,21 @@
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="sex" value="female" id="female">
               Female
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label>Which vaccine do you get vaccinated today?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="maker" value="false" id="astrano" checked>
+              Pfizer（ファイザー）・BioNTech（ビオンテック）・Fosun（復星） "Comirnaty" ／ Moderna（モデルナ）・Takeda(武田薬品) "Spikevax (previously COVID-19 Vaccine Moderna)"
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="maker" value="true" id="astrayes">
+              Astra-Zeneca（アストラゼネカ）・Oxford Univ. "Vaxzevria" / I don't know
             </label>
           </div>
         </div>
@@ -337,6 +361,12 @@
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-i"  value="true" id="immunodeficiency">
                 Immune deficiency
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label astra">
+                <input class="form-check-input" type="checkbox" name="q5-addition-mousai"  value="true" id="mousaikekkann">
+                Capillary leak syndrome
               </label>
             </div>
             <div>

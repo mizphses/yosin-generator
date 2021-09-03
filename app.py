@@ -92,6 +92,9 @@ def genpdf():
   q5otm = checkExistTf(request.form.get('q5-addition-otm'))
   q5toy = checkExistTf(request.form.get('touyaku'))
   sharepdf = checkExistTf(request.form.get('pdf'))
+  maker = checkExistTf(request.form.get('maker'))
+  if maker == 'true':
+    q5m = checkExistTf(request.form.get('q5-addition-mousai'))
   if q1 == 'false':
     firstvac = (datetime.strptime(request.form.get('firstvaccine'), '%Y-%m-%d'))
   else:
@@ -104,12 +107,18 @@ def genpdf():
     day = "0"+str(birth.day)
   else :
     day = str(birth.day)
-  json_file = {"address":address, "name":name, "ruby":ruby, "phone":phone,"year":str(birth.year), "month":month, "day":day, "age": age, "sex": sex, "q1":[q1, str(firstvac.month), str(firstvac.day)], "q2":q2, "q3":q3, "q4":[q4, med, ov65, ov60, eld, underlying, underlying_sikkan], "q5":[q5,q5h,q5k,q5l,q5b,q5n,q5i,q5otc,q5chiryou,q5sara,q5mb,q5otm,q5toy], "q6":[q6, sick], "q7":[q7, guai], "q8":q8, "q9":[q9, anaphylaxie_item], "q10":[q10, vaccine_item, vaccine_shoujou], "q11":q11, "q12":[q12, vaccinated_type, vaccinated_when], "q13":q13}
+  if maker == 'true':
+    json_file = {"address":address, "name":name, "ruby":ruby, "phone":phone,"year":str(birth.year), "month":month, "day":day, "age": age, "sex": sex, "q1":[q1, str(firstvac.month), str(firstvac.day)], "q2":q2, "q3":q3, "q4":[q4, med, ov65, ov60, eld, underlying, underlying_sikkan], "q5":[q5,q5h,q5k,q5l,q5b,q5n,q5i,q5m,q5otc,q5chiryou,q5sara,q5mb,q5otm,q5toy], "q6":[q6, sick], "q7":[q7, guai], "q8":q8, "q9":[q9, anaphylaxie_item], "q10":[q10, vaccine_item, vaccine_shoujou], "q11":q11, "q12":[q12, vaccinated_type, vaccinated_when], "q13":q13}
+  else:
+    json_file = {"address":address, "name":name, "ruby":ruby, "phone":phone,"year":str(birth.year), "month":month, "day":day, "age": age, "sex": sex, "q1":[q1, str(firstvac.month), str(firstvac.day)], "q2":q2, "q3":q3, "q4":[q4, med, ov65, ov60, eld, underlying, underlying_sikkan], "q5":[q5,q5h,q5k,q5l,q5b,q5n,q5i,q5otc,q5chiryou,q5sara,q5mb,q5otm,q5toy], "q6":[q6, sick], "q7":[q7, guai], "q8":q8, "q9":[q9, anaphylaxie_item], "q10":[q10, vaccine_item, vaccine_shoujou], "q11":q11, "q12":[q12, vaccinated_type, vaccinated_when], "q13":q13}
   if sharepdf == 'true':
     fontname_g = "ipag-mona"
     default_font_size = 12
     font_path = "./resource/ipag-mona.ttf"
-    file_in = "./resource/vaccine_yoshin_pfizer_takeda.pdf"
+    if maker == 'false':
+      file_in = "./resource/vaccine_yoshin_pfizer_takeda.pdf"
+    else:
+      file_in = "./resource/vaccine_yoshin_astra.pdf"
     output = BytesIO()
     cc = canvas.Canvas(output)
     def write_yes_no(x,y,answer):
@@ -154,17 +163,28 @@ def genpdf():
             write_checkmark(228,497,answer[4])
             write_checkmark(284,497,answer[5])
             write_checkmark(384,497,answer[6])
-            write_checkmark(86,480,answer[7])
-            if answer[7] == 'true':
-              cc.drawString(130,480,answer[8])
-            write_checkmark(86,463,answer[9])
-            if answer[9] == 'true':
-              cc.drawString(190,463,answer[10])
-            write_checkmark(286,463,answer[11])
-            if answer[11] == 'true':
-              cc.drawString(330,463,answer[12])
-
-        write_yes_no(442,492,answer[0])
+            if q5m is None:
+              if answer[7] == 'true':
+                write_checkmark(86,480,answer[7])
+                cc.drawString(130,480,answer[8])
+              write_checkmark(86,463,answer[9])
+              if answer[9] == 'true':
+                cc.drawString(190,463,answer[10])
+              write_checkmark(286,463,answer[11])
+              if answer[11] == 'true':
+                cc.drawString(330,463,answer[12])
+            else:
+              write_checkmark(85,480,answer[7])
+              write_checkmark(192,480,answer[8])
+              if answer[8] == 'true':
+                cc.drawString(240,480,answer[9])
+            write_checkmark(86,463,answer[10])
+            if answer[10] == 'true':
+              cc.drawString(190,463,answer[11])
+            write_checkmark(286,463,answer[12])
+            if answer[12] == 'true':
+              cc.drawString(330,463,answer[13])
+        write_yes_no(442,488,answer[0])
 
 
     def write_q6():

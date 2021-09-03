@@ -124,6 +124,15 @@
           }
         });
       });
+      $(function() {
+        $('[name="maker"]:radio').on("change", function() {
+          if ($('[id=astrano]').prop('checked')) {
+            $('.astra').addClass('invisible');
+          } else if ($('[id=astrayes]').prop('checked')) {
+            $('.astra').removeClass('invisible');
+          }
+        });
+      });
     </script>
   </head>
 
@@ -181,6 +190,21 @@
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="sex" value="female" id="female">
               女
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label>今回のワクチンは何社製を接種しますか?</label>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="maker" value="false" id="astrano" checked>
+              Pfizer（ファイザー）・BioNTech（ビオンテック）・Fosun（復星）『コミナティComirnaty』 ／ Moderna（モデルナ）・武田薬品 『COVID-19 ワクチンモデルナ（スパイクバックスSpikevax）』
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="maker" value="true" id="astrayes">
+              Astra-Zeneca（アストラゼネカ）・オックスフォード大学『バキスゼブリア』／わからない
             </label>
           </div>
         </div>
@@ -337,6 +361,12 @@
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-i"  value="true" id="immunodeficiency">
                 免疫不全
+              </label>
+            </div>
+            <div>
+              <label class="form-check-label astra">
+                <input class="form-check-input" type="checkbox" name="q5-addition-mousai"  value="true" id="mousaikekkann">
+                毛細血管漏出症候群
               </label>
             </div>
             <div>
