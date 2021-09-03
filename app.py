@@ -243,7 +243,7 @@ def genpdf():
   cc.drawString(65,710,form_info['ruby'])
   if form_info['sex'] == 'male':
       cc.drawString(338,669,'レ')
-  else:
+  elif form_info['sex'] == 'female':
       cc.drawString(373,669,'レ')
   write_q1()
   write_yes_no(442,600,form_info['q2'])
