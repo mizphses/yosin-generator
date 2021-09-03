@@ -30,6 +30,10 @@ QRcode(app)
 @app.route("/")
 def start():
   return render_template("index.html", name="name")
+
+@app.route("/english")
+def eng():
+  return render_template("english.html", name="name")
 @app.route("/reader")
 def read():
   return render_template("read.html")
