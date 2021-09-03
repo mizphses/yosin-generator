@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta property="og:url" content="https://vaccine-yoshin.herokuapp.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="予診票ジェネレータ(JP)" />
+    <meta property="og:description" content="日本国内用の公費で行うファイザー・モデルナ武田ワクチンの接種用予診票がオンラインで作れます．" />
+    <meta property="og:site_name" content="予診票ジェネレータ" />
+    <meta property="og:image" content="https://vaccine-yoshin.herokuapp.com/assets/ogp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>予診票ジェネレータ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://raw.githubusercontent.com/cozmo/jsQR/master/dist/jsQR.js">
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCQPWXM7E8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QCQPWXM7E8');
+
+    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      * {
+        font-family: "Lexend Deca", "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
+      }
+      .qrcode{
+        max-width: 80vw;
+        text-align: center;
+        padding: 10px;
+      }
+      @media (min-width: 900px){
+        .qrcode{
+          max-width: 30vw;
+          text-align: center;
+          padding-top: 10px;
+        }
+      }
+    </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">予診票ジェネレータ</a>
+      </div>
+    </nav>
+    <div class="container">
+      <canvas id="canvas" style="width:100%"></canvas>
+      <div id="output">
+        <div id="outputMessage">No QR code detected.</div>
+      </div>
+      <script>
+        var video = document.createElement("video");
+        var canvasElement = document.getElementById("canvas");
+        var canvas = canvasElement.getContext("2d");
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+            video.srcObject = stream;
+            video.setAttribute("playsinline", true);
+            video.play();
+            requestAnimationFrame(tick);
+        });
+        function tick() {
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                canvasElement.height = video.videoHeight;
+                canvasElement.width = video.videoWidth;
+                canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+                var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                var code = jsQR(imageData.data, imageData.width, imageData.height, {
+                    inversionAttempts: "dontInvert",
+                });
+                if (code) {
+                    document.getElementById("outputMessage").innerText = code.data;
+                } else {
+                    document.getElementById("outputMessage").innerText = "No QR code detected.";
+                }
+            }
+            requestAnimationFrame(tick);
+        }
+      </script>
+    </div>
+    <footer class="footer" style="background:lightgray;">
+      <div class="container">
+        <p class="text-muted">(c)2021- Fuminori Ogawa</p>
+        <p>動かすのにも金がかかるので寄付お待ちしてます：住信SBIネット銀行 107（バナナ支店）普通・4634757　オガワ　フミノリ宛</p>
+        <p>Code(Tea-or-Ramen Ware) <a href="https://github.com/mizphses/yosin-generator">https://github.com/mizphses/yosin-generator</a></p>
+      </div>
+    </footer>
+  </body>
+
+</html>

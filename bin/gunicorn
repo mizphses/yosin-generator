@@ -1,4 +1,4 @@
-#!/Users/mizphses/vaccine_yos/bin/python
+#!/Users/mizphses/vaccine_yos/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -28,7 +28,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
       * {
-        font-family: "Lexend", "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
+        font-family: "Lexend Deca", "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
       }
 
       .question {
@@ -214,7 +214,7 @@
           <div class="form-check">
             <label class="form-check-label">
               いいえ（別の自治体です）
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q2" id="02no" value="false">
+              <input class="form-check-input" type="radio" name="q2" id="02no" value="false">
             </label>
           </div>
         </div>
@@ -228,7 +228,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q3" id="03no" value="false">
+              <input class="form-check-input" type="radio" name="q3" id="03no" value="false">
               いいえ（理解できませんでした）
             </label>
           </div>
@@ -244,7 +244,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q4" id="04no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q4" id="04no" value="false" checked>
               いいえ（あてはまりません）
             </label>
           </div>
@@ -296,7 +296,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q5"  id="05no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q5"  id="05no" value="false" checked>
               いいえ（あてはまりません）
             </label>
           </div>
@@ -377,7 +377,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q6" id="06no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q6" id="06no" value="false" checked>
               いいえ（熱が出ていませんし，病気にかかっていません）
             </label>
           </div>
@@ -396,7 +396,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q7" id="07no" value="false"  checked>
+              <input class="form-check-input" type="radio" name="q7" id="07no" value="false"  checked>
               いいえ（具合が悪いところはありません）
             </label>
           </div>
@@ -415,7 +415,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q8" id="08no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q8" id="08no" value="false" checked>
               いいえ（けいれん・ひきつけを起こしたことはありません）
             </label>
           </div>
@@ -430,7 +430,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q9" id="09no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q9" id="09no" value="false" checked>
               いいえ（重いアレルギー，アナフィラキシーが出たことはありません）
             </label>
           </div>
@@ -449,7 +449,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q10" id="10no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q10" id="10no" value="false" checked>
               いいえ（ワクチン・予防接種で調子が悪くなったことはありません）
             </label>
           </div>
@@ -470,7 +470,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q11"  id="11no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q11"  id="11no" value="false" checked>
               いいえ（妊娠や授乳はしていません．）
             </label>
           </div>
@@ -485,7 +485,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q12" id="12no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q12" id="12no" value="false" checked>
               いいえ（ワクチンや予防接種を2週間以内に受けていません）
             </label>
           </div>
@@ -506,8 +506,24 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" data-bind="checked:IsChecked, checkedValue: false" name="q13"  id="13no" value="false" checked>
+              <input class="form-check-input" type="radio" name="q13"  id="13no" value="false" checked>
               いいえ（質問はありません）
+            </label>
+          </div>
+        </div>
+        <div class="question">
+          <label><b>高度な設定：</b>PDFで出力しますか？共有モードで出力しますか？</label>
+          <p style="background: #EEE;padding:1em;">指示がない場合はPDFのままにしてください．</p>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pdf" id="13yes" value="true" checked>
+              PDF
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pdf"  id="13no" value="false">
+              共有モード
             </label>
           </div>
         </div>
