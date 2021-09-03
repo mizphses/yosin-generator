@@ -558,7 +558,14 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mb-3">接種を希望します．ついては，以上の内容で問診票のPDFを作成します</button>
+        <div class="alert alert-danger">
+          この予診票は接種の安全性の確保を目的としています．このことを理解の上，本予診表が市町村，国民健康保険中央会および国民健康保険団体連合会に提出されることに同意してください．
+        </div>
+        <button type="submit" class="btn btn-primary mb-3" onClick="window.alert('印刷時は倍率を「100%」（等倍）にして印刷してください．')">
+          問診票記載の内容を理解し，接種を希望します．ついては，以上の内容で問診票のPDFを作成します</button>
+          <div class="alert alert-warning">
+            印刷の際は100%（等倍）設定で印刷してください！
+          </div>
       </form>
     </div>
     <footer class="footer" style="background:lightgray;">
