@@ -19,7 +19,8 @@
 ## 作者
 
 mizphses（オガワフミノリ） fuminori@mizphses.com
-SuperQ64/covid-19-medicalformを参考に作成しました．
+
+[SuperQ64/covid-19-medicalform](https://github.com/SuperQ64/covid-19-medicalform)を参考に作成しました．BIG KANSHA!
 
 ## ライセンス
 
