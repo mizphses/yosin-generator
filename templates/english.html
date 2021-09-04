@@ -133,6 +133,19 @@
           }
         });
       });
+      $(function() {
+        $('[name="maker"]:radio').on("change", function() {
+          if ($('[id=astrano]').prop('checked')) {
+            $('.astra').addClass('invisible');
+          } else if ($('[id=astrano2]').prop('checked')) {
+            $('.astra').addClass('invisible');
+          } else if ($('[id=astrayes]').prop('checked')) {
+            $('.astra').removeClass('invisible');
+          } else if ($('[id=astrayes2]').prop('checked')) {
+            $('.astra').removeClass('invisible');
+          }
+        });
+      });
     </script>
   </head>
 
@@ -194,16 +207,28 @@
         </div>
         <div class="question">
           <label>Which vaccine do you get vaccinated today?</label>
-          <div class="mb-3 form-check">
+          <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="maker" value="false" id="astrano" checked>
-              Pfizer（ファイザー）・BioNTech（ビオンテック）・Fosun（復星） "Comirnaty" ／ Moderna（モデルナ）・Takeda(武田薬品) "Spikevax (previously COVID-19 Vaccine Moderna)"
+              <input class="form-check-input" type="radio" name="maker" value="pfizer" id="astrano" checked>
+              Pfizer（ファイザー）・BioNTech（ビオンテック）・Fosun（復星） "Comirnaty"
+           </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="maker" value="moderna" id="astrano2">
+              Moderna（モデルナ）・Takeda(武田薬品) "Spikevax (previously COVID-19 Vaccine Moderna)"
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="maker" value="true" id="astrayes">
-              Astra-Zeneca（アストラゼネカ）・Oxford Univ. "Vaxzevria" / I don't know
+              <input class="form-check-input" type="radio" name="maker" value="astrazeneca" id="astrayes">
+              Astra-Zeneca（アストラゼネカ）・Oxford Univ. "Vaxzevria"
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="maker" value="dontknow" id="astrayes2">
+              I don't know which type will be vaccinated
             </label>
           </div>
         </div>
