@@ -115,7 +115,7 @@ def genpdf():
   if sharepdf == 'true':
     fontname_g = "ipag-mona"
     default_font_size = 12
-    font_path = "./resource/ipag-mona.ttf"
+    font_path = "./resource/ipag.ttf"
     if form_info['maker'] == 'astrazeneca' or form_info['maker'] == 'dontknow':
       file_in = "./resource/vaccine_yoshin_astra.pdf"
     else:
@@ -124,13 +124,13 @@ def genpdf():
     cc = canvas.Canvas(output)
     def write_yes_no(x,y,answer):
         if answer == 'true':
-            cc.drawString(x,y,'レ')
+            cc.drawString(x,y,'✓')
         else:
-            cc.drawString(x + 45,y,'レ')
+            cc.drawString(x + 45,y,'✓')
 
     def write_checkmark(x,y,answer):
         if answer == 'true':
-            cc.drawString(x,y,'レ')
+            cc.drawString(x,y,'✓')
 
     def write_q1():
         answer = form_info['q1']
@@ -277,9 +277,9 @@ def genpdf():
     cc.setFont(fontname_g,12)
     cc.drawString(65,710,form_info['ruby'])
     if form_info['sex'] == 'male':
-        cc.drawString(338,669,'レ')
+        cc.drawString(338,669,'✓')
     elif form_info['sex'] == 'female':
-        cc.drawString(373,669,'レ')
+        cc.drawString(373,669,'✓')
     write_q1()
     write_yes_no(442,600,form_info['q2'])
     write_yes_no(442,580,form_info['q3'])
@@ -294,7 +294,7 @@ def genpdf():
     write_q12()
     write_yes_no(442,285,form_info['q13'])
 
-    cc.drawString(377,186,'レ')
+    cc.drawString(377,186,'✓')
 
     cc.showPage()
     cc.save()
