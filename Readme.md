@@ -6,9 +6,8 @@
 
 ## 実行環境の作り方
 
-1. Python 3.9.5くらいのバージョンを突っ込む
-2. venvをアクティベートしてあげる
-3. requirements.txtからいるパッケージをインストールする
+[開発指南（Wiki）](https://github.com/mizphses/yosin-generator/wiki/Developers-Guide)
+をご参照ください
 
 ## 出力結果
 
