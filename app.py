@@ -111,11 +111,12 @@ def genpdf():
   else :
     day = str(birth.day)
   json_file = {"address":address, "name":name, "ruby":ruby, "phone":phone,"year":str(birth.year), "month":month, "day":day, "age": age, "sex": sex, "maker": maker, "q1":[q1, str(firstvac.month), str(firstvac.day)], "q2":q2, "q3":q3, "q4":[q4, med, ov65, ov60, eld, underlying, underlying_sikkan], "q5":[q5,q5h,q5k,q5l,q5b,q5n,q5i,q5m,q5otc,q5chiryou,q5sara,q5mb,q5otm,q5toy], "q6":[q6, sick], "q7":[q7, guai], "q8":q8, "q9":[q9, anaphylaxie_item], "q10":[q10, vaccine_item, vaccine_shoujou], "q11":q11, "q12":[q12, vaccinated_type, vaccinated_when], "q13":q13}
+  form_info = json_file
   if sharepdf == 'true':
     fontname_g = "ipag-mona"
     default_font_size = 12
     font_path = "./resource/ipag-mona.ttf"
-    if maker == 'astrazeneca' or maker == 'dontknow':
+    if form_info['maker'] == 'astrazeneca' or form_info['maker'] == 'dontknow':
       file_in = "./resource/vaccine_yoshin_astra.pdf"
     else:
       file_in = "./resource/vaccine_yoshin_pfizer_takeda.pdf"
@@ -163,7 +164,7 @@ def genpdf():
             write_checkmark(228,497,answer[4])
             write_checkmark(284,497,answer[5])
             write_checkmark(384,497,answer[6])
-            if maker == 'astrazeneca' or maker == 'dontknow':
+            if form_info['maker'] == 'astrazeneca' or form_info['maker'] == 'dontknow':
               write_checkmark(85,480,answer[7])
               write_checkmark(192,480,answer[8])
               if answer[8] == 'true':
@@ -246,8 +247,6 @@ def genpdf():
             cc.drawString(0,y,str(y / 100))
             x = x + 100
             y = y + 100
-
-    form_info = json_file
 
     pdfmetrics.registerFont(TTFont(fontname_g,font_path))
     cc.setFont(fontname_g,default_font_size)

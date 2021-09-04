@@ -151,35 +151,50 @@
       <img src="assets/main.svg">
     </a>
     <div class="container">
-      <form action="/genpdf" method="post">
+      <form action="/genpdf" method="post" class="needs-validation" novalidate>
         <div class="question">
           <div class="mb-3">
             <label for="address" class="form-label">住民票記載の住所</label>
             <input type="text" class="form-control" id="address" name="address" placeholder="東京都八王子市東中野７４２番地１" required>
+            <div class="invalid-feedback">
+              住所の記入がありません
+            </div>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="name" class="form-label">氏名（外国籍の場合は在留カード等の通り）</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="水沢　菜音" required>
+            <div class="invalid-feedback">
+              氏名の記入がありません
+            </div>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="ruby" class="form-label">フリガナ</label>
             <input type="text" class="form-control" id="ruby" name="ruby" placeholder="ミズサワ　ナノ" required>
+            <div class="invalid-feedback">
+              フリガナの記入がありません
+            </div>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="phone" class="form-label">電話番号, ハイフン（-）区切りで</label>
-            <input type="text" class="form-control" id="phone" name="phone" pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="080-1234-5678" required>
+            <input type="tel" class="form-control" id="phone" name="phone" pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="080-1234-5678" required>
+            <div class="invalid-feedback">
+              電話番号のの記入がないか，フォーマットを誤っています．
+            </div>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="birthdate" class="form-label">生年月日</label>
             <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="2003/02/28" required>
+            <div class="invalid-feedback">
+              生年月日が入力されていません
+            </div>
           </div>
         </div>
         <div class="question">
@@ -201,6 +216,9 @@
           <div class="mb-3">
             <label for="vaccination_date" class="form-label">接種予定日</label>
             <input type="date" class="form-control" id="vaccination_date" name="vaccination_date" placeholder="2003/02/28" required>
+            <div class="invalid-feedback">
+              接種予定日を書いてください．
+            </div>
           </div>
         </div>
         <div class="question">
@@ -583,6 +601,28 @@
             印刷の際は100%（等倍）設定で印刷してください！
           </div>
       </form>
+      <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+          'use strict'
+
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.querySelectorAll('.needs-validation')
+
+          // Loop over them and prevent submission
+          Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+              }, false)
+            })
+        })()
+      </script>
     </div>
     <footer class="footer" style="background:lightgray;">
       <div class="container">
