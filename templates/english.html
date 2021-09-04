@@ -162,13 +162,13 @@
       <form action="/genpdf" method="post" class="needs-validation" novalidate>
         <div class="question">
           <div class="mb-3">
-            <label for="address" class="form-label">Name written on your resident card</label>
+            <label for="address" class="form-label">Address written on your resident card</label>
             <input type="text" class="form-control" id="address" name="address" placeholder="東京都八王子市東中野７４２番地１" required>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
-            <label for="name" class="form-label">Name(Latin character)</label>
+            <label for="name" class="form-label">Name written on your resident card</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="水沢　菜音" required>
           </div>
         </div>
@@ -180,7 +180,7 @@
         </div>
         <div class="question">
           <div class="mb-3">
-            <label for="phone" class="form-label">Telephone No., divided by hyphen(-)</label>
+            <label for="phone" class="form-label">Telephone No., separated by hyphens (-)</label>
             <input type="text" class="form-control" id="phone" name="phone" pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="080-1234-5678" required>
           </div>
         </div>
@@ -206,7 +206,7 @@
           </div>
         </div>
         <div class="question">
-          <label>Which vaccine do you get vaccinated today?</label>
+          <label>Which vaccine will you get today?</label>
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="maker" value="pfizer" id="astrano" checked>
@@ -228,28 +228,28 @@
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="maker" value="dontknow" id="astrayes2">
-              I don't know which type will be vaccinated
+              I don't know
             </label>
           </div>
         </div>
         <div class="question">
-          <label><b>Q1.</b>Are you receiving the COVID-19 vaccine for the first time?</label>
+          <label><b>Q1.</b>Is this the first time you are receiving the COVID-19 vaccine?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q1" id="01no" value="true" checked>
-              I have never get vaccinated
+              This is my first time
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q1" id="01yes" value="false" >
-              I got vaccinated at least once before.
+              I have received the COVID-19 vaccine before
             </label>
           </div>
           <div class="mb-3 q1show invisible" id="q1show">
-            <label for="firstvaccine" class="form-label">When is the first time?</label>
+            <label for="firstvaccine" class="form-label">When were you first vaccinated?</label>
             <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/08/03">
-            <p class="caution">If you will get vaccinated more than 3 times today, please ask the staff at the venue.</p>
+            <p class="caution">If you have already received the COVID-19 vaccine twice or more, please tell the staff at the venue.</p>
           </div>
         </div>
         <div class="question">
@@ -284,8 +284,8 @@
           </div>
         </div>
         <div class="question">
-          <label><b>Q4.</b>Do you fall into one of the target groups that have a higher priority for this vaccine?</label>
-          <p style="background: #EEE;padding:1em;">Targets: Medical personnel, etc., Person 60 years or older, Worker at a senior citizen facility, etc., Person with an underlying disease</p>
+          <label><b>Q4.</b>Do you fall into one of the higher priority target groups for this vaccine?</label>
+          <p style="background: #EEE;padding:1em;">Target groups: Medical personnel, People aged 60 years or older, Workers at senior citizen facilities and People with an underlying illness</p>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q4" id="04yes" value="true">
@@ -299,7 +299,7 @@
             </label>
           </div>
           <div class="mb-3 q4show invisible" id="q4show">
-            <label for="firstvaccine" class="form-label">Select <span class="caution">ALL</span> the matching</label>
+            <label for="firstvaccine" class="form-label">Select <span class="caution">ALL</span> that apply</label>
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q4-addition-med" value="true" id="medwork">
@@ -327,17 +327,17 @@
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q4-addition-und" value="true" id="underlying">
-                Person with an underlying disease
+                Person with an underlying illness
               </label>
             </div>
             <div class="mb-3 underlying-addition">
-              <label for="name" class="form-label">name of disease:</label>
+              <label for="name" class="form-label">Name of the illness</label>
               <input type="text" class="form-control" name="underlying_sikkan" placeholder="肥満">
             </div>
           </div>
         </div>
         <div class="question">
-          <label><b>Q5. </b>Are you currently suffering from any kind of illness and receiving treatment or medication?</label>
+          <label><b>Q5.</b>Are you currently suffering from any kind of illness and receiving treatment or medication?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q5" id="05yes" value="true">
@@ -347,11 +347,11 @@
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q5"  id="05no" value="false" checked>
-              No.
+              No
             </label>
           </div>
           <div class="mb-3 q5show invisible" id="q4show">
-            <label for="firstvaccine" class="form-label">次から当てはまるものを<span class="caution">全て</span>選んでください</label>
+            <label for="firstvaccine" class="form-label">Select <span class="caution">ALL</span> that apply</label>
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-h" value="true" id="heart">
@@ -379,7 +379,7 @@
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-n" value="true" id="blood_notstop">
-                disease that makes it difficult to stop bleeding
+                Bleeding disorders
               </label>
             </div>
             <div>
@@ -397,7 +397,7 @@
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-otc" value="true" id="other_chiryou">
-                Other diseases
+                Other illnesses
               </label>
             </div>
             <div class="mb-3 other-chiryou">
@@ -406,7 +406,7 @@
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-sara" value="true" id="immunodeficiency">
-                Nature of treatment: blood-thinning medicine (If you checked, please write the name of the medicine below)
+                Blood-thinning medicine: (If you checked, please write the name of the medicine below)
               </label>
             </div>
             <div class="mb-3 other-chiryou">
@@ -415,7 +415,7 @@
             <div>
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="q5-addition-otm" value="true" id="immunodeficiency">
-                Nature of treatment: Other(If you checked, please write the name of the medicine below)
+                Other treatments: (If you checked, please write the name of the medicine below)
               </label>
             </div>
             <div class="mb-3 other-chiryou">
@@ -424,7 +424,7 @@
           </div>
         </div>
         <div class="question">
-          <label><b>Q6. </b>Have you had a fever or gotten sick in the last month?</label>
+          <label><b>Q6.</b>Have you had a fever or been sick in the last month?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q6" id="06yes" value="true">
@@ -438,12 +438,12 @@
             </label>
           </div>
           <div class="mb-3 q6show invisible" id="q6show">
-            <label for="sick" class="form-label">What kind of the disease?</label>
+            <label for="sick" class="form-label">What kind of illness?</label>
             <input type="text" class="form-control" id="sick" name="sick" placeholder="Cold風邪">
           </div>
         </div>
         <div class="question">
-          <label><b>Q7.</b>Are there any parts of your body that are not feeling well today?</label>
+          <label><b>Q7.</b>Are you feeling sick today?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q7" id="07yes" value="true">
@@ -457,7 +457,7 @@
             </label>
           </div>
           <div class="mb-3 q7show invisible" id="q7show">
-            <label for="guai" class="form-label">What is the condition?</label>
+            <label for="guai" class="form-label">What are your symptoms?</label>
             <input type="text" class="form-control" id="guai" name="guai" placeholder="have a cough咳がある">
           </div>
         </div>
@@ -477,7 +477,7 @@
           </div>
         </div>
         <div class="question">
-          <label><b>Q9.</b>Have you ever experienced severe allergic symptoms (such as anaphylaxis) from medications or foods??</label>
+          <label><b>Q9.</b>Have you ever experienced severe allergic symptoms (such as anaphylaxis) from medications or foods?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q9" id="09yes" value="true">
@@ -492,11 +492,11 @@
           </div>
           <div class="mb-3 q9show invisible" id="q7show">
             <label for="anaphylaxie_item" class="form-label">Medication or food that caused the problem?</label>
-            <input type="text" class="form-control" id="anaphylaxie_item" name="anaphylaxie_item" placeholder="そば">
+            <input type="text" class="form-control" id="anaphylaxie_item" name="anaphylaxie_item" placeholder="sobaそば">
           </div>
         </div>
         <div class="question">
-          <label><b>Q10.</b>Have you ever been sick after receiving a vaccine??</label>
+          <label><b>Q10.</b>Have you ever been sick after receiving a vaccine?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="q10"  id="10yes" value="true">
@@ -511,13 +511,13 @@
           </div>
           <div class="mb-3 q10show invisible" id="q10show">
             <label for="vaccine_item" class="form-label">Which vaccination?</label>
-            <input type="text" class="form-control" id="vaccine_item" name="vaccine_item" placeholder="インフルエンザ">
-            <label for="vaccine_sick" class="form-label">How was the Condition?</label>
-            <input type="text" class="form-control" id="vaccine_sick" name="vaccine_shoujou" placeholder="倒れました">
+            <input type="text" class="form-control" id="vaccine_item" name="vaccine_item" placeholder="influenzaインフルエンザ">
+            <label for="vaccine_sick" class="form-label">What were your symptoms?</label>
+            <input type="text" class="form-control" id="vaccine_sick" name="vaccine_shoujou" placeholder="I fainted倒れました">
           </div>
         </div>
         <div class="question">
-          <label><b>Q11.</b>Is there any possibility that you are currently pregnant (for example, your period is later than expected)? Or are
+          <label><b>Q11.</b>Is there any possibility that you are currently pregnant (for example, your period is later than expected) or are
             you breastfeeding?</label>
           <div class="mb-3 form-check">
             <label class="form-check-label">
@@ -547,9 +547,9 @@
             </label>
           </div>
           <div class="mb-3 q12show invisible" id="q11show">
-            <label for="vaccinated_type" class="form-label">What kind of the vaccine?</label>
-            <input type="text" class="form-control" id="vaccinated_type" name="vaccinated_type" placeholder="インフルエンザ">
-            <label for="vaccinated_type" class="form-label">When is that?</label>
+            <label for="vaccinated_type" class="form-label">What vaccine did you receive?</label>
+            <input type="text" class="form-control" id="vaccinated_type" name="vaccinated_type" placeholder="influenzaインフルエンザ">
+            <label for="vaccinated_type" class="form-label">When were you vaccinated?</label>
             <input type="date" class="form-control" id="vaccinated_when" name="vaccinated_when" placeholder="2021/10/03">
           </div>
         </div>
@@ -569,8 +569,8 @@
           </div>
         </div>
         <div class="question">
-          <label><b>Advanced:</b>Export with PDF or special QR?</label>
-          <p style="background: #EEE;padding:1em;">PLEASE DO NOT CHANGE THIS OPTION WITHOUT THE DIRECTION OF THE OFFICER.</p>
+          <label><b>Advanced:</b>Export as a PDF or a sharable QR code?</label>
+          <p style="background: #EEE;padding:1em;">PLEASE CHOOSE PDF UNLESS THE STAFF INSTRUCT DIFFERENTLY.</p>
           <div class="mb-3 form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="pdf" id="13yes" value="true" checked>
@@ -580,15 +580,15 @@
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="pdf"  id="13no" value="false">
-              QR/Share Mode
+              QR code/Share Mode
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mb-3" onClick="window.alert('Please print with 100% magnification on your printer')">T
-          he purpose of this preliminary medical examination form is to ensure
+        <button type="submit" class="btn btn-primary mb-3" onClick="window.alert('Please select 100% (1x) magnification when printing.')">
+          The purpose of this preliminary medical examination form is to ensure
           the safety of the vaccine.
           I understand this and consent to this prevaccination Screening
-          Questionnaire being submitted to the municipal government, the AllJapan Federation of National Health Insurance Organizations,
+          Questionnaire being submitted to the municipal government, the Japan Federation of National Health Insurance Organizations,
           and the National Health Insurance Organization.
         </button>
         <script>
@@ -612,7 +612,7 @@
         </script>
       </form>
       <div class="alert alert-danger">
-        Please print on the A4 paper (Not Legal) with 100% magnification
+        Please print on A4 paper (Not Legal) with 100% (1x) magnification.
       </div>
     </div>
     <footer class="footer" style="background:lightgray;">
@@ -620,7 +620,7 @@
         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <p class="text-muted">(c)2021- Fuminori Ogawa</p>
-        <p>動かすのにも金がかかるので寄付お待ちしてます：<a href="https://www.amazon.jp/hz/wishlist/ls/2S457RY5ZO29O?ref_=wl_share">https://www.amazon.jp/hz/wishlist/ls/2S457RY5ZO29O?ref_=wl_share</a>（現金で寄付をしたい人はfuminori@mizphses.comまで）</p>
+        <p>動かすのにも金がかかるので寄付お待ちしてます：<a href="https://www.amazon.jp/hz/wishlist/ls/2S457RY5ZO29O?ref_=wl_share">https://www.amazon.jp/hz/wishlist/ls/2S457RY5ZO29O?ref_=wl_share</a>（If you would like to donate with cash, please contact fuminori@mizphses.com）</p>
         <p>Code(Tea-or-Ramen Ware) <a href="https://github.com/mizphses/yosin-generator">https://github.com/mizphses/yosin-generator</a></p>
       </div>
     </footer>
