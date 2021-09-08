@@ -169,12 +169,12 @@ def genpdf():
               write_checkmark(192,480,answer[8])
               if answer[8] == 'true':
                 cc.drawString(240,480,answer[9])
-            write_checkmark(86,463,answer[10])
-            if answer[10] == 'true':
-              cc.drawString(190,463,answer[11])
-            write_checkmark(286,463,answer[12])
-            if answer[12] == 'true':
-              cc.drawString(330,463,answer[13])
+              write_checkmark(86,463,answer[10])
+              if answer[10] == 'true':
+                cc.drawString(190,463,answer[11])
+              write_checkmark(286,463,answer[12])
+              if answer[12] == 'true':
+                cc.drawString(330,463,answer[13])
             else:
               if answer[8] == 'true':
                 write_checkmark(86,480,answer[8])
