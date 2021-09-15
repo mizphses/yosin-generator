@@ -34,6 +34,9 @@ def start():
 @app.route("/english")
 def eng():
   return render_template("english.html", name="name")
+@app.route("/korean")
+def kor():
+  return render_template("korean.html", name="name")
 @app.route("/reader")
 def read():
   return render_template("read.html")
