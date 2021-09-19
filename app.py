@@ -37,9 +37,9 @@ def eng():
 @app.route("/korean")
 def kor():
   return render_template("korean.html", name="name")
-@app.route("/easyja")
+@app.route("/easy_ja")
 def ezja():
-  return render_template("easyja.html", name="name")
+  return render_template("easy_ja.html", name="name")
 @app.route("/reader")
 def read():
   return render_template("read.html")
