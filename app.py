@@ -40,6 +40,9 @@ def kor():
 @app.route("/easy_ja")
 def ezja():
   return render_template("easy_ja.html", name="name")
+@app.route("/sagyouyou")
+def sgy():
+  return render_template("sagyouyou.html", name="name")
 @app.route("/reader")
 def read():
   return render_template("read.html")
@@ -56,7 +59,7 @@ def genpdf():
   birth = datetime.strptime(birthdate, '%Y-%m-%d')
   age = str(relativedelta(vaccination_date, birth).years)
   sex=checkExistTf(request.form.get('sex'))
-  q1=request.form.get('q1')
+  q1=request.form.get('q1').split(',')
   q2=request.form.get('q2')
   q3=request.form.get('q3')
   q4=request.form.get('q4')
@@ -104,10 +107,15 @@ def genpdf():
     q5m = checkExistTf(request.form.get('q5-addition-mousai'))
   else:
     q5m = "false"
-  if q1 == 'false':
+  if q1[0] == 'false':
     firstvac = (datetime.strptime(request.form.get('firstvaccine'), '%Y-%m-%d'))
+    if q1[1] == '3':
+      secondvac = (datetime.strptime(request.form.get('secondvaccine'), '%Y-%m-%d'))
+    else:
+      secondvac = date.today()
   else:
     firstvac = date.today()
+    secondvac = date.today()
   if len(str(birth.month)) == 1:
     month = "0"+str(birth.month)
   else :
@@ -116,7 +124,7 @@ def genpdf():
     day = "0"+str(birth.day)
   else :
     day = str(birth.day)
-  json_file = {"address":address, "name":name, "ruby":ruby, "phone":phone,"year":str(birth.year), "month":month, "day":day, "age": age, "sex": sex, "maker": maker, "q1":[q1, str(firstvac.month), str(firstvac.day)], "q2":q2, "q3":q3, "q4":[q4, med, ov65, ov60, eld, underlying, underlying_sikkan], "q5":[q5,q5h,q5k,q5l,q5b,q5n,q5i,q5m,q5otc,q5chiryou,q5sara,q5mb,q5otm,q5toy], "q6":[q6, sick], "q7":[q7, guai], "q8":q8, "q9":[q9, anaphylaxie_item], "q10":[q10, vaccine_item, vaccine_shoujou], "q11":q11, "q12":[q12, vaccinated_type, vaccinated_when], "q13":q13}
+  json_file = {"address":address, "name":name, "ruby":ruby, "phone":phone,"year":str(birth.year), "month":month, "day":day, "age": age, "sex": sex, "maker": maker, "q1":[q1[0], q1[1], str(firstvac.month), str(firstvac.day), str(secondvac.month), str(secondvac.day)], "q2":q2, "q3":q3, "q4":[q4, med, ov65, ov60, eld, underlying, underlying_sikkan], "q5":[q5,q5h,q5k,q5l,q5b,q5n,q5i,q5m,q5otc,q5chiryou,q5sara,q5mb,q5otm,q5toy], "q6":[q6, sick], "q7":[q7, guai], "q8":q8, "q9":[q9, anaphylaxie_item], "q10":[q10, vaccine_item, vaccine_shoujou], "q11":q11, "q12":[q12, vaccinated_type, vaccinated_when], "q13":q13}
   form_info = json_file
   if sharepdf == 'true':
     fontname_g = "SourceHanSans-Medium"
@@ -142,10 +150,11 @@ def genpdf():
         answer = form_info['q1']
         answer = answer
         if answer[0] == 'false':
-            cc.drawString(223,616,answer[1])
-            cc.drawString(260,616,answer[2])
-            # cc.drawString(340,616,answer[3])
-            # cc.drawString(375,616,answer[4])
+            cc.drawString(223,616,answer[2])
+            cc.drawString(260,616,answer[3])
+            if answer[1] == '3':
+              cc.drawString(340,616,answer[4])
+              cc.drawString(375,616,answer[5])
         write_yes_no(442,625,answer[0])
         return
 
@@ -261,7 +270,9 @@ def genpdf():
     pp = pagexobj(page[0])
     cc.doForm(makerl(cc, pp))
 
-    if int(form_info['age']) < 100:
+    if int(form_info['age']) < 10:
+        form_info['age'] = '00' + form_info['age']
+    elif int(form_info['age']) < 10:
         form_info['age'] = '0' + form_info['age']
 
     phone = form_info['phone'].split("-")
@@ -314,4 +325,4 @@ def genpdf():
     return render_template("share.html", json = json_file)
 
 if __name__ == "__main__":
-  app.run(debug=True, port="6000")
+  app.run(debug=True, port="3001")

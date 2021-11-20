@@ -56,8 +56,13 @@
         $('[name="q1"]:radio').on("change", function() {
           if ($('[id=01no]').prop('checked')) {
             $('.q1show').addClass('invisible');
-          } else if ($('[id=01yes]').prop('checked')) {
+            $('.q1show_2').addClass('invisible');
+          } else if ($('[id=01yes2]').prop('checked')) {
             $('.q1show').removeClass('invisible');
+            $('.q1show_2').addClass('invisible');
+          } else if ($('[id=01yes3]').prop('checked')) {
+            $('.q1show').removeClass('invisible');
+            $('.q1show_2').removeClass('invisible');
           }
         });
       });
@@ -161,7 +166,7 @@
       </div>
     </nav>
     <a href="https://github.com/mizphses/yosin-generator/wiki">
-      <img src="assets/main.svg">
+      <img src="assets/main_en.svg">
     </a>
     <div class="container">
       <form action="/genpdf" method="post" class="needs-validation" novalidate>
@@ -174,13 +179,14 @@
         <div class="question">
           <div class="mb-3">
             <label for="name" class="form-label">Name written on your resident card</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="水沢　菜音" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="TURNER ELIZABETH" required>
+            <p><small style="font-family: DengXian, SimHei, Heiti SC;">※繁体中文和简体中文都不能使用．Simplified/Traditional Kanjis may not be used.</small></p>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="ruby" class="form-label">Katakana Name</label>
-            <input type="text" class="form-control" id="ruby" name="ruby" placeholder="ミズサワ　ナノ" required>
+            <input type="text" class="form-control" id="ruby" name="ruby" placeholder="ターナー　エリザベス" required>
           </div>
         </div>
         <div class="question">
@@ -247,25 +253,34 @@
           </div>
         </div>
         <div class="question">
-          <label><b>Q1.</b>Is this the first time you are receiving the COVID-19 vaccine?</label>
-          <div class="mb-3 form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="q1" id="01no" value="true" checked>
-              This is my first time
-            </label>
+          <div class="question">
+            <label><b>質問（1）</b>Is this the first time you are receiving the COVID-19 vaccine?</label>
+            <div class="mb-3 form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="q1" id="01no" value="true" checked>
+                This is my <b>first</b> time
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="q1" id="01yes2" value="false,2" >
+                This is my <b>second</b> time
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="q1" id="01yes3" value="false,3" >
+                This is my <b>third</b> time
+              </label>
+            </div>
+            <div class="mb-3 q1show invisible" id="q1show">
+              <label for="firstvaccine" class="form-label">When were you first vaccinated?</label>
+              <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/07/03">
+              <label for="secondvaccine" class="form-label q1show_2">When were you second vaccinated?</label>
+              <input type="date" class="form-control q1show_2" name="secondvaccine" id="secondvaccine" placeholder="2021/08/03">
+              <p class="caution q1show_2">If you have already experienced more than 4 times, please ask officers at the venue.</p>
+            </div>
           </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="q1" id="01yes" value="false" >
-              I have received the COVID-19 vaccine before
-            </label>
-          </div>
-          <div class="mb-3 q1show invisible" id="q1show">
-            <label for="firstvaccine" class="form-label">When were you first vaccinated?</label>
-            <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/08/03">
-            <p class="caution">If you have already received the COVID-19 vaccine twice or more, please tell the staff at the venue.</p>
-          </div>
-        </div>
         <div class="question">
           <label><b>Q2.</b>Is the city, town, or village where you currently reside the same as the city, town, or village stated on the coupon?</label>
           <div class="mb-3 form-check">

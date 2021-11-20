@@ -56,8 +56,13 @@
         $('[name="q1"]:radio').on("change", function() {
           if ($('[id=01no]').prop('checked')) {
             $('.q1show').addClass('invisible');
-          } else if ($('[id=01yes]').prop('checked')) {
+            $('.q1show_2').addClass('invisible');
+          } else if ($('[id=01yes2]').prop('checked')) {
             $('.q1show').removeClass('invisible');
+            $('.q1show_2').addClass('invisible');
+          } else if ($('[id=01yes3]').prop('checked')) {
+            $('.q1show').removeClass('invisible');
+            $('.q1show_2').removeClass('invisible');
           }
         });
       });
@@ -254,14 +259,22 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="q1" id="01yes" value="false" >
-              ２回目以上です．
+              <input class="form-check-input" type="radio" name="q1" id="01yes2" value="false,2" >
+              ２回目です．
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q1" id="01yes3" value="false,3" >
+              ３回目です．
             </label>
           </div>
           <div class="mb-3 q1show invisible" id="q1show">
             <label for="firstvaccine" class="form-label">１回目はいつですか？</label>
-            <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/08/03">
-            <p class="caution">優先摂取を受けたなどで今日が3回目以上の方はスタッフに伝えてください．</p>
+            <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/07/03">
+            <label for="secondvaccine" class="form-label q1show_2">２回目はいつですか？</label>
+            <input type="date" class="form-control q1show_2" name="secondvaccine" id="secondvaccine" placeholder="2021/08/03">
+            <p class="caution q1show_2">優先摂取を受けたなどで今日が4回目以上の方はスタッフに伝えてください．</p>
           </div>
         </div>
         <div class="question">

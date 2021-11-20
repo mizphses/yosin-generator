@@ -7,7 +7,7 @@
     <meta property="og:title" content="신종 코로나 백신 예진표 작성 보조툴(Japan)" />
     <meta property="og:description" content="You can generate filled the questionnaire form for the COVID-19 vaccination in Japan online." />
     <meta property="og:site_name" content="신종 코로나 백신 예진표 작성 보조툴 @일본" />
-    <meta property="og:image" content="https://vaccine-yoshin.herokuapp.com/assets/ogp-kr.png" />
+    <meta property="og:image" content="https://vaccine-yoshin.herokuapp.com/assets/ogp.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>신종 코로나 백신 예진표 작성 보조툴 @일본</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -66,8 +66,13 @@
         $('[name="q1"]:radio').on("change", function() {
           if ($('[id=01no]').prop('checked')) {
             $('.q1show').addClass('invisible');
-          } else if ($('[id=01yes]').prop('checked')) {
+            $('.q1show_2').addClass('invisible');
+          } else if ($('[id=01yes2]').prop('checked')) {
             $('.q1show').removeClass('invisible');
+            $('.q1show_2').addClass('invisible');
+          } else if ($('[id=01yes3]').prop('checked')) {
+            $('.q1show').removeClass('invisible');
+            $('.q1show_2').removeClass('invisible');
           }
         });
       });
@@ -171,7 +176,7 @@
       </div>
     </nav>
     <a href="https://github.com/mizphses/yosin-generator/wiki">
-      <img src="assets/kr_description.png" style="max-width:100%;">
+      <img src="assets/main_kr.svg" style="max-width:100%;">
     </a>
     <div style="margin:1em;padding:1.5em;background-color:lightblue">	이 항목은 당신이 쓰기 쉬운 말로 써주십시오. 의료기관에서 다시 한번 일본어로 번역합니다.</div>
     <div class="container">
@@ -185,13 +190,13 @@
         <div class="question">
           <div class="mb-3">
             <label for="name" class="form-label">성함 (재류카드와 동일하게 표기)</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="水沢　菜音" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="LEE SEOJUN" required>
           </div>
         </div>
         <div class="question">
           <div class="mb-3">
             <label for="ruby" class="form-label">요미가나 (있으신 경우)</label>
-            <input type="text" class="form-control" id="ruby" name="ruby" placeholder="ミズサワ　ナノ" required>
+            <input type="text" class="form-control" id="ruby" name="ruby" placeholder="リ　ソジュン" required>
           </div>
         </div>
         <div class="question">
@@ -254,6 +259,7 @@
             </label>
           </div>
         </div>
+
         <div class="question">
           <label><b>Q1.</b>신종 코로나 백신 접종 1회차입니까?</label>
           <div class="mb-3 form-check">
@@ -264,16 +270,25 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="q1" id="01yes" value="false" >
-              2회차 이상입니다.
+              <input class="form-check-input" type="radio" name="q1" id="01yes2" value="false,2" >
+              2회차입니다.
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="q1" id="01yes3" value="false,3" >
+              3회차 이상입니다.
             </label>
           </div>
           <div class="mb-3 q1show invisible" id="q1show">
             <label for="firstvaccine" class="form-label">당신은 언제 처음 예방접종을 받았습니까?</label>
-            <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/08/03">
-            <p class="caution">이미 COVID-19 백신을 두 번 이상 접종한 경우 행사장의 직원에게 알려주십시오.</p>
+            <input type="date" class="form-control" name="firstvaccine" id="firstvaccine" placeholder="2021/07/03">
+            <label for="secondvaccine" class="form-label q1show_2">당신은 언제 두 번째 예방 접종을 받았습니까?</label>
+            <input type="date" class="form-control q1show_2" name="secondvaccine" id="secondvaccine" placeholder="2021/08/03">
+            <p class="caution q1show_2">이미 COVID-19 백신을 4회 이상 접종한 경우 행사장의 직원에게 알려주십시오</p>
           </div>
         </div>
+
         <div class="question">
           <label><b>Q2.</b>	현시점을 기준으로 주민표 및 재류카드에 등록 된 주소와 쿠폰에 적힌 시정촌은 같습니까?</label>
           <div class="mb-3 form-check">
